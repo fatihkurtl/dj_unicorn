@@ -1,0 +1,26 @@
+{% load unicorn %}
+<div>
+    <form unicorn:submit.prevent="add_task">
+        <input type="text"
+               unicorn:model.defer="task"
+               unicorn:keyup.escape="task=''"
+               placeholder="New todo" id="task">
+        <button type="submit">Add</button>
+    </form>
+    <button unicorn:click="reset">Reset all tasks</button>
+    <p>
+        {% if todo_items %}
+            <ul>
+                {% for task in todo_items %}
+                <input type="checkbox"
+                    unicorn:change="update_task({{ task.id }})"
+                    {% if task.completed %}checked{% endif %}>
+                    <li>{{ task.title }}</li>
+                    <button unicorn:click="delete_task({{ task.id }})">Delete</button>
+                {% endfor %}
+            </ul>
+        {% else %}
+            No tasks 🎉
+        {% endif %}
+    </p>
+</div>

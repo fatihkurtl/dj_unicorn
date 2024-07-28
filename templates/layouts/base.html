@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Unicorn Example</title>
+    {% load unicorn %}
+    {% unicorn_scripts %}
+</head>
+<body>
+    {% csrf_token %}
+    {% block content %}
+
+    {% endblock %}
+
+</body>
+</html>

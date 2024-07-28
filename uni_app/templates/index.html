@@ -1,0 +1,33 @@
+{% load unicorn %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Unicorn Example</title>
+    <style>
+        html, body { margin: 0; padding: 0; }
+        .header{
+            height: 50px;
+            width: 100%;
+            background: lightblue;
+            display: flex;
+            align-items: center;
+        }
+
+        main {
+            margin-left: 30px;
+        }
+    </style>
+    {% unicorn_scripts %}
+</head>
+<body>
+
+    {% csrf_token %}
+    <h1 class="header">Unicorn Todo App</h1>
+    <main>
+        {% unicorn 'todo' %}
+    </main>
+
+</body>
+</html>
