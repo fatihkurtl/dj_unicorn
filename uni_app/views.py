@@ -5,3 +5,7 @@ from django.views.generic import ListView, TemplateView
 
 class HomePageView(TemplateView):
     template_name = 'index.html'
+
+
+class IndexPageView(TemplateView):
+    template_name = 'pages/index.html'

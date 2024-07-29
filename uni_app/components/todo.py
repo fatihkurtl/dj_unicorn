@@ -15,6 +15,10 @@ class TodoView(UnicornView):
     update_success_message = ""
     delete_success_message = ""
     
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.reset()
+    
     def add_task(self):
         form = self.form_class({'title': self.task, 'completed': False})
         if form.is_valid():
@@ -27,13 +31,13 @@ class TodoView(UnicornView):
         task = TodoItem.objects.get(id=task_id)
         task.completed = not task.completed
         task.save()
-        self.todo_items = TodoItem.objects.all()
+        self.reset()
         self.update_success_message = "Task updated successfully"
 
     def delete_task(self, task_id):
         print(task_id)
         TodoItem.objects.get(id=task_id).delete()
-        self.todo_items = TodoItem.objects.all()
+        self.reset()
         self.delete_success_message = "Task deleted successfully"
         
     def reset(self):
