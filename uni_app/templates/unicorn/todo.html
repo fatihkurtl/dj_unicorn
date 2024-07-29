@@ -13,14 +13,24 @@
             <ul>
                 {% for task in todo_items %}
                 <input type="checkbox"
-                    unicorn:change="update_task({{ task.id }})"
-                    {% if task.completed %}checked{% endif %}>
-                    <li>{{ task.title }}</li>
-                    <button unicorn:click="delete_task({{ task.id }})">Delete</button>
+                unicorn:change="update_task({{ task.id }})"
+                {% if task.completed %}checked{% endif %}>
+                <li>{{ task.title }}</li>
+                <button unicorn:click="delete_task({{ task.id }})">Delete</button>
+                <br />
                 {% endfor %}
             </ul>
         {% else %}
             No tasks 🎉
         {% endif %}
     </p>
+    {% if create_success_message %}
+        <p id="create_success_message" style="color: green;">{{ create_success_message }}</p>
+    {% endif %}
+    {% if update_success_message %}
+        <p id="update_success_message" style="color: orange;">{{ update_success_message }}</p>
+    {% endif %}
+    {% if delete_success_message %}
+        <p id="delete_success_message" style="color: red;">{{ delete_success_message }}</p>
+    {% endif %}
 </div>
