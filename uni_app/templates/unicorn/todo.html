@@ -15,7 +15,7 @@
                 <input type="checkbox"
                 unicorn:change="update_task({{ task.id }})"
                 {% if task.completed %}checked{% endif %}>
-                <li>{{ task.title }}</li>
+                <li {% if task.completed %} style="color: green;" {% endif %}>{{ task.title }}</li>
                 <button unicorn:click="delete_task({{ task.id }})">Delete</button>
                 <br />
                 {% endfor %}
